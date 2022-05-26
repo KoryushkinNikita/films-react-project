@@ -1,0 +1,37 @@
+.poster {
+    display: flex;
+    min-height: 600px;
+    background-size: cover;
+    background-position: top center;
+    padding-bottom: 5vh;
+    position: relative;
+    height: 35vh;
+    width: 101vw;
+    opacity: 0.8;
+    margin-left: -1vw;
+    margin-bottom: 10vh;
+}
+.posterContent {
+    margin-left: 1vw;
+    width: 100%;
+    font-size: 1.5vw;
+    font-weight: 500;
+    height: 100%;
+}
+
+.movieTitleName{
+  font-size: 4vw;
+  margin-top: 0;
+  margin-bottom: 18vh;
+  width: 45vw;
+}
+.movieBudget{
+  position: absolute;
+  bottom: -9vh;
+  margin-left: 90vw;
+}
+.movieReview{
+  position: absolute;
+  bottom: 0;
+  width: 45vw;
+}
