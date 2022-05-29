@@ -2,12 +2,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 1vw;
+    padding: 15px 0;
     text-transform: uppercase;
 }
 .name{
   font-size: 2vw;
-  margin-left: -0.8vw;
+  margin-left: 0.2vw;
 }
 
 .search{

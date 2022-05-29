@@ -1,40 +1,37 @@
-import {useEffect, useState} from "react"
+import {useEffect, useLayoutEffect, useState} from "react"
 import './mainPage.css'
 import Info from '../../constInfo'
 import axios from 'axios'
 import MovieCard from "../movie/movieCard"
 import Poster from '../poster/poster'
-import Header from '../header/header'
 
-const MainPage = () => {
+const MainPage = (props) => {
     const info = Info()
 
     const [movies, setMovies] = useState([])
-    const [searchKey, setSearchKey] = useState()
     const [movie, setMovie] = useState({title: "Loading Movies"})
 
     useEffect(() => {
         fetchMovies()
-    }, [])
+
+    },[props.value])
 
     const fetchMovies = async (event) => {
         if (event) {
             event.preventDefault()
         }
-
-        const {data} = await axios.get(`${searchKey ? info.search : info.discover}`, {
+        const {data} = await axios.get(`${props.value ? info.search : info.discover}`, {
             params: {
                 api_key: info.key,
-                query: searchKey
+                query: props.value
             }
         })
-        if (data){
+
+        if (data.results[0]){
           setMovies(data.results)
-          setMovie(data.results[0])}
-        if (data.results.length)
-        {
-          await fetchMovie(data.results[0].id)
+          setMovie(data.results[0].id)
         }
+        if (data.results.length) fetchMovie(data.results[0].id)
     }
 
     const fetchMovie = async (id) => {
@@ -72,38 +69,31 @@ const MainPage = () => {
 
 
     const selectedMovie = (movie) => {
-      if (movie.title && movie.overview) {
+      if (movie.title && movie.overview && movie.backdrop_path) {
         fetchMovie(movie.id)
         setMovie(movie)
         window.scrollTo(0,0)
       }
-      else alert("Not all about this film");
+      else alert("Incomplete information about this film");
 
     }
 
-    const moviesShown = () => (
-        movies.map(movie => (
-            <MovieCard
-                selectMovie={selectedMovie}
-                key={movie.id}
-                movie={movie}
-            />
-        ))
-    )
-
     return (
         <div className="MainPage">
-        <Header onSubmit={fetchMovies} onInput={(event) => setSearchKey(event.target.value)}/>
                 <main>
                         <Poster movie={movie}/>
-                        <div className="buttons">
-                          <div className="buttonGenre mainPagebutton" onClick={() => fetchGenre('main')}>Main Page</div>
-                          <div className="buttonGenre trending" onClick={() => fetchGenre('tranding')}>Trending</div>
-                          <div className="buttonGenre series" onClick={() => fetchGenre('series')}>Series</div>
-                          <div className="buttonGenre topRated" onClick={() => fetchGenre('topRated')}>Top rated</div>
-                        </div>
                         <div className="moviesContainer">
-                          {moviesShown()}
+                        <div className="buttonGenre mainPagebutton" onClick={() => fetchGenre('main')}>Main Page</div>
+                        <div className="buttonGenre trending" onClick={() => fetchGenre('tranding')}>Trending</div>
+                        <div className="buttonGenre series" onClick={() => fetchGenre('series')}>Series</div>
+                        <div className="buttonGenre topRated" onClick={() => fetchGenre('topRated')}>Top rated</div>
+                        {movies.map(movie => (
+                            <MovieCard
+                                selectMovie={selectedMovie}
+                                key={movie.id}
+                                movie={movie}
+                            />
+                        ))}
                         </div>
                 </main>
         </div>

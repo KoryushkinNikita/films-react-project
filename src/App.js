@@ -2,12 +2,19 @@ import {useEffect, useState} from "react"
 import axios from 'axios'
 import Footer from './components/footer/footer'
 import MainPage from './components/mainPage/mainPage'
+import Header from './components/header/header'
 import { BrowserRouter, Route } from 'react-router-dom';
 
 function App() {
+    const [searchKey, setSearchKey] = useState();
     return (
       <BrowserRouter>
-                <MainPage/>
+                <Header onKeyPress={(event) => {
+                  if (event.key === "Enter"){
+                  event.preventDefault()
+                  setSearchKey(event.target.value)}
+                  ;}}/>
+                <MainPage value={searchKey}/>
                 <Footer/>
         </BrowserRouter>
     );

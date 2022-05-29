@@ -1,9 +1,8 @@
 .footer{
-  width: 101vw;
-  float: left;
+  width: 100vw;
   background-color: #090A0E;
   opacity: 0.5;
-  margin-left: -1vw;
+  margin-left: 0vw;
 }
 .footerMenu{
   width: 100%;

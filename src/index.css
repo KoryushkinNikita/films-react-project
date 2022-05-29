@@ -1,6 +1,7 @@
 .body{
   color: white;
   font-family: "Gill Sans", sans-serif;
+  background-color: rgba(32, 33, 84);
   background-image:url('../public/background.jpg');
   background-size: cover;
   background-position: top center;
