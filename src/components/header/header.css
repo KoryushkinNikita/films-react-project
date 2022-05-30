@@ -13,8 +13,8 @@
 .search{
   border: 2px solid gray;
   outline: transparent;
-  background-color: transparent;
   border-radius: 25px;
+  background-color: inherit;
   color: white;
   width: 10vw;
   height: 4vh;
@@ -27,7 +27,6 @@
     position: absolute;
     right: 5px;
     top: 5px;
-    background-color: transparent;
     color:  white;
     border: none;
     cursor: pointer;

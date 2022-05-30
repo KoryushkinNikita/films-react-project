@@ -1,12 +1,10 @@
-import {useEffect, useLayoutEffect, useState} from "react"
+import {useEffect, useState} from "react"
 import './mainPage.css'
-import Info from '../../constInfo'
-import axios from 'axios'
 import MovieCard from "../movie/movieCard"
 import Poster from '../poster/poster'
+import ApiCalls from '../../ApiCalls'
 
 const MainPage = (props) => {
-    const info = Info()
 
     const [movies, setMovies] = useState([])
     const [movie, setMovie] = useState({title: "Loading Movies"})
@@ -20,49 +18,27 @@ const MainPage = (props) => {
         if (event) {
             event.preventDefault()
         }
-        const {data} = await axios.get(`${props.value ? info.search : info.discover}`, {
-            params: {
-                api_key: info.key,
-                query: props.value
-            }
-        })
+        const data = await ApiCalls.getMovies(props.value);
 
         if (data.results[0]){
-          setMovies(data.results)
-          setMovie(data.results[0].id)
+          setMovies(data.results);
         }
-        if (data.results.length) fetchMovie(data.results[0].id)
+        if (data.results.length) fetchMovie(data.results[0].id);
     }
 
     const fetchMovie = async (id) => {
-        const {data} = await axios.get(`${info.movie}movie/${id}`, {
-            params: {
-                api_key: info.key,
-            }
-        })
-        if (data)
-          setMovie(data)
+        const movieData = await ApiCalls.getMovie(id);
+        if (movieData)
+          setMovie(movieData)
     }
 
     const fetchGenre = async (type) => {
-        let link = ""
-        switch (type)
-        {
-          case "main":link = info.discover;break;
-          case "tranding":link = info.tranding;break;
-          case "series":link = info.series;break;
-          case "topRated":link = info.topRated;break;
-        }
-        const {data} = await axios.get(`${link}`, {
-            params: {
-                api_key: info.key
-            }
-        })
-        if (data){
-          setMovies(data.results)
-          setMovie(data.results[0])}
-        if (data.length)
-          await fetchMovie(data.results[0].id)
+        const genreData = await ApiCalls.getGenres(type);
+        if (genreData){
+          setMovies(genreData.results)
+          setMovie(genreData.results[0])}
+        if (genreData.length)
+          await fetchMovie(genreData.results[0].id)
 
     }
 

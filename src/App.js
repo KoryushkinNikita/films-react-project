@@ -1,12 +1,12 @@
-import {useEffect, useState} from "react"
-import axios from 'axios'
+import {useState} from "react"
 import Footer from './components/footer/footer'
 import MainPage from './components/mainPage/mainPage'
 import Header from './components/header/header'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
     const [searchKey, setSearchKey] = useState();
+    
     return (
       <BrowserRouter>
                 <Header onKeyPress={(event) => {

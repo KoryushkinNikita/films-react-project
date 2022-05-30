@@ -14,7 +14,7 @@ const Poster = ({movie}) => {
                       {movie.budget ? <p className="movieBudget"><b>Budget:</b><br/>{movie.budget}$</p> :null}
                       {movie.overview ? <p className="movieReview"><b>Overview:</b><br/>{movie.overview}</p> : null}
                   </div>
-                  </div>
+        </div>
                   : null}
         </>
         )
