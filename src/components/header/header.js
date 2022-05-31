@@ -1,4 +1,3 @@
-import "../../index.css";
 import './header.css'
 
 export default function Header({onKeyPress}) {
@@ -6,7 +5,7 @@ export default function Header({onKeyPress}) {
       <header className='header'>
         <div className='name'>КиноПоиск</div>
         <form className='searchForm' onSubmit={onKeyPress}>
-          <input className='search' type='text' id='search'/>
+          <input className='search' type='text' id='search' name="search"/>
         </form>
       </header>
   );

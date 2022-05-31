@@ -15,30 +15,27 @@ const MainPage = (props) => {
     },[props.value])
 
     const fetchMovies = async (event) => {
-        if (event) {
-            event.preventDefault()
-        }
         const data = await ApiCalls.getMovies(props.value);
 
         if (data.results[0]){
           setMovies(data.results);
         }
-        if (data.results.length) fetchMovie(data.results[0].id);
+        if (data.results.length) setPosterData(data.results[0].id);
     }
 
-    const fetchMovie = async (id) => {
+    const setPosterData = async (id) => {
         const movieData = await ApiCalls.getMovie(id);
         if (movieData)
           setMovie(movieData)
     }
 
-    const fetchGenre = async (type) => {
+    const setGenre = async (type) => {
         const genreData = await ApiCalls.getGenres(type);
         if (genreData){
           setMovies(genreData.results)
-          setMovie(genreData.results[0])}
+          setPosterData(genreData.results[0].id)}
         if (genreData.length)
-          await fetchMovie(genreData.results[0].id)
+          await setPosterData(genreData.results[0].id)
 
     }
 
@@ -46,8 +43,7 @@ const MainPage = (props) => {
 
     const selectedMovie = (movie) => {
       if (movie.title && movie.overview && movie.backdrop_path) {
-        fetchMovie(movie.id)
-        setMovie(movie)
+        setPosterData(movie.id)
         window.scrollTo(0,0)
       }
       else alert("Incomplete information about this film");
@@ -59,10 +55,10 @@ const MainPage = (props) => {
                 <main>
                         <Poster movie={movie}/>
                         <div className="moviesContainer">
-                        <div className="buttonGenre mainPagebutton" onClick={() => fetchGenre('main')}>Main Page</div>
-                        <div className="buttonGenre trending" onClick={() => fetchGenre('tranding')}>Trending</div>
-                        <div className="buttonGenre series" onClick={() => fetchGenre('series')}>Series</div>
-                        <div className="buttonGenre topRated" onClick={() => fetchGenre('topRated')}>Top rated</div>
+                        <div className="buttonGenre mainPagebutton" onClick={() => setGenre('main')}>Main Page</div>
+                        <div className="buttonGenre trending" onClick={() => setGenre('tranding')}>Trending</div>
+                        <div className="buttonGenre series" onClick={() => setGenre('series')}>Series</div>
+                        <div className="buttonGenre topRated" onClick={() => setGenre('topRated')}>Top rated</div>
                         {movies.map(movie => (
                             <MovieCard
                                 selectMovie={selectedMovie}

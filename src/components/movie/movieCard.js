@@ -1,12 +1,11 @@
 import React from 'react';
 import './movie.css'
-import Info from '../../constInfo'
+const image = "https://image.tmdb.org/t/p/w342";
 
 const MovieCard = ({movie, selectMovie}) => {
-    const info = Info();
     return (
         <div onClick={() => selectMovie(movie)} className="movie">
-                {movie.poster_path ? <img className="movieIMG" src={info.image + movie.poster_path} alt={movie.title}/> : null}
+                {movie.poster_path ? <img className="movieIMG" src={image + movie.poster_path} alt={movie.title}/> : null}
                 <br/>
                 {movie.title ? <span className="movieTitle">{movie.title}</span> : null}
                 <br/>

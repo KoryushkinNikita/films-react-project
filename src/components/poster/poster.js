@@ -1,14 +1,14 @@
 import React from 'react';
-import Info from '../../constInfo'
 import './poster.css'
 
+const backgroundIMG = "https://image.tmdb.org/t/p/w1280";
+
 const Poster = ({movie}) => {
-    const info = Info();
       return (
         <>
         {movie.backdrop_path ?
         <div className="poster"
-           style={{backgroundImage: `url(${info.backgroundIMG}${movie.backdrop_path})`}}>
+           style={{backgroundImage: `url(${backgroundIMG}${movie.backdrop_path})`}}>
                   <div className="posterContent">
                       {movie.title ? <h1 className="movieTitleName">{movie.title}</h1> : null}
                       {movie.budget ? <p className="movieBudget"><b>Budget:</b><br/>{movie.budget}$</p> :null}
