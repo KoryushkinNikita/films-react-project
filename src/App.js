@@ -6,14 +6,13 @@ import { BrowserRouter } from 'react-router-dom';
 
 function App() {
     const [searchKey, setSearchKey] = useState();
-    
+
     return (
       <BrowserRouter>
                 <Header onKeyPress={(event) => {
-                  if (event.key === "Enter"){
                   event.preventDefault()
-                  setSearchKey(event.target.value)}
-                  ;}}/>
+                  setSearchKey(event.target.search.value)}
+                }/>
                 <MainPage value={searchKey}/>
                 <Footer/>
         </BrowserRouter>
