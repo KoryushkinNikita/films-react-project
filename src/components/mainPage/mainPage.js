@@ -10,11 +10,11 @@ const MainPage = (props) => {
     const [movie, setMovie] = useState({title: "Loading Movies"})
 
     useEffect(() => {
-        fetchMovies()
+        initMovies()
 
     },[props.value])
 
-    const fetchMovies = async (event) => {
+    const initMovies = async () => {
         const data = await ApiCalls.getMovies(props.value);
 
         if (data.results[0]){
