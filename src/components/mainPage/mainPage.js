@@ -34,14 +34,15 @@ const MainPage = (props) => {
         if (genreData){
           setMovies(genreData.results)
           setPosterData(genreData.results[0].id)}
-        if (genreData.length)
-          await setPosterData(genreData.results[0].id)
 
     }
 
 
 
     const selectedMovie = (movie) => {
+      {/*
+        api возвращает данные не корректно,
+        и для того чтобы понять что фильма нет, проверяем обязательные поля*/}
       if (movie.title && movie.overview && movie.backdrop_path) {
         setPosterData(movie.id)
         window.scrollTo(0,0)
