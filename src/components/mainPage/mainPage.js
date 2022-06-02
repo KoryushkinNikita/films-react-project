@@ -3,17 +3,21 @@ import './mainPage.css'
 import MovieCard from "../movie/movieCard"
 import Poster from '../poster/poster'
 import ApiCalls from '../../ApiCalls'
-
+/**
+* Создание реакт элемента основной части
+*/
 const MainPage = (props) => {
 
     const [movies, setMovies] = useState([])
     const [movie, setMovie] = useState({title: "Loading Movies"})
-
     useEffect(() => {
         initMovies()
 
     },[props.value])
-
+    /**
+    * Инициализация фильмов или поиск по заданному значению
+    * @param {string} props.value - значение поискового запроса
+    */
     const initMovies = async () => {
         const data = await ApiCalls.getMovies(props.value);
 
@@ -22,13 +26,18 @@ const MainPage = (props) => {
         }
         if (data.results.length) setPosterData(data.results[0].id);
     }
-
+    /**
+    * задание постера фильма
+    */
     const setPosterData = async (id) => {
         const movieData = await ApiCalls.getMovie(id);
         if (movieData)
           setMovie(movieData)
     }
-
+    /**
+    * Поиск и вывод фильмов по заданному жанру
+    * @param {string} type - тип жанра
+    */
     const setGenre = async (type) => {
         const genreData = await ApiCalls.getGenres(type);
         if (genreData){
@@ -38,7 +47,10 @@ const MainPage = (props) => {
     }
 
 
-
+    /**
+    * СОздание постера фильма при нажатии на него
+    * @param {object} movie - выбранный фильм
+    */
     const selectedMovie = (movie) => {
       {/*
         api возвращает данные не корректно,

@@ -2,7 +2,9 @@ import './footer.css';
 import { Link } from 'react-router-dom';
 
 
-
+/**
+* Создание реакт элемента футера
+*/
 const Footer = () => {
   const homePress = () => {
       window.scrollTo(0, 0)

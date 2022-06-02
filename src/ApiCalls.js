@@ -9,7 +9,10 @@ const TRANDING = `https://api.themoviedb.org/3/trending/all/day`;
 const TOP_RATED = `https://api.themoviedb.org/3/tv/top_rated`;
 
 export default class ApiCalls {
-
+    /**
+    * Поиск фильмов по заданному поисковому слово или загрузка фильмов при начальной загрузке страницы
+    * @param {value} - поисковое слово
+    */
     static getMovies = async (value) => {
         const {data} = await axios.get(`${value ? SEARCH : DISCOVER}`, {
             params: {
@@ -20,7 +23,10 @@ export default class ApiCalls {
 
         return data;
     }
-
+    /**
+    * Поиск фильмоа по заданному id
+    * @param {id} - id фильма
+    */
     static getMovie = async (id) => {
         const {data} = await axios.get(`${MOVIE}movie/${id}`, {
             params: {
@@ -31,6 +37,10 @@ export default class ApiCalls {
         return data
     }
 
+    /**
+    * Поиск фильмов по заданному жанру
+    * @param {type} - тип жанра
+    */
     static getGenres = async (type) => {
       let link = "";
       switch (type)

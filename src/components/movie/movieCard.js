@@ -1,7 +1,9 @@
 import React from 'react';
 import './movie.css'
 const IMAGE = "https://image.tmdb.org/t/p/w342";
-
+/**
+* Создание реакт элемента карточки фильма
+*/
 const MovieCard = ({movie, selectMovie}) => {
     return (
         <div onClick={() => selectMovie(movie)} className="movie">

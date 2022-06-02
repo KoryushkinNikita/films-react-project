@@ -1,5 +1,7 @@
 import './header.css'
-
+/**
+* Создание реакт элемента хэдера
+*/
 export default function Header({onKeyPress}) {
   return (
       <header className='header'>

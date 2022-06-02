@@ -2,7 +2,9 @@ import React from 'react';
 import './poster.css'
 
 const BACKGROUND_IMG = "https://image.tmdb.org/t/p/w1280";
-
+/**
+* Создание реакт элемента постера
+*/
 const Poster = ({movie}) => {
       return (
         <>
