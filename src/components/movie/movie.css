@@ -1,0 +1,37 @@
+.movie {
+  position: relative;
+  width: 15vw;
+  cursor: pointer;
+  text-align: center;
+  height: 53vh;
+  border-radius: 2vw;
+}
+
+.movie:hover{
+    background: rgba(209, 200, 219, 0.3);
+}
+.movieTitle{
+  font-size: 1.5vw;
+  width: 15vw;
+  margin-bottom: 3vh;
+}
+.movieIMG {
+    margin-top: 2vh;
+    height: 35vh;
+    max-width: 100%;
+    border-radius: 2vw;
+}
+
+.moviePopularity{
+    font-size: 1.5vw;
+     margin-bottom: 3vh;
+}
+
+.movieVoting {
+    background-color: #0F1014;
+    opacity: 0.5;
+    border: 1px solid gray;
+    font-size: 1.5vw;
+    width: 7vw;
+    border-radius: 1vh;
+}

@@ -1,0 +1,24 @@
+.footer{
+  width: 100vw;
+  background-color: #090A0E;
+  opacity: 0.5;
+}
+.footerMenu{
+  width: 100%;
+  height: 22vh;
+}
+.footerColumn{
+  text-align: center;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin-left: 2.5vw;
+}
+
+.link{
+  margin-top: 2vh;
+  color: white;
+  text-decoration: none;
+  font-size: 1.3vw;
+}

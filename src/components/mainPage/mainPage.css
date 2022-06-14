@@ -1,0 +1,25 @@
+.moviesContainer{
+  max-width: 1020px;
+  margin: auto;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:30px;
+}
+
+.buttonGenre{
+  height: 5vh;
+  width: 8vw;
+  padding-top: 1.5vh;
+  text-align: center;
+  background: rgba(250, 250, 250, 0.2);
+  border-radius: 25vh;
+  font-size: 1.5vw;
+  margin-left: 3.5vw;
+}
+
+.buttonGenre:hover{
+  background: rgba(209, 200, 219, 0.3);
+  font-size: 1.7vw;
+}
